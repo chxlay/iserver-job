@@ -27,4 +27,4 @@ SpringMVC、SpringBoot、Mybatis-Plus
 1.  作者：Alay 独自开发及维护
 
 #### 注意：
-此项目仅仅为示例的 Demo, 存在大量 Bug 使用者自行修复，关于 通用的 Quartz 封装修复的在 https://gitee.com/chxlay/iserver-common ，关于业务模块 Job中存在的bug，比如 Controller 中的 Bug 在其他项目中有修复，目前未迁移到此项目，如有需要的可以留言，或有时间，我会将使用过程中发现并修复后的代码同步到该项目
+此项目仅仅为示例的 Demo, 存在大量 Bug 使用者自行修复，关于 通用的 Quartz 封装修复的在 https://gitee.com/chxlay/iserver-common  （码云已经废除使用，看时间可能会迁移到 GitHub），关于业务模块 Job中存在的bug，比如 Controller 中的 Bug 在其他项目中有修复，目前未迁移到此项目，如有需要的可以留言，或有时间，我会将使用过程中发现并修复后的代码同步到该项目
