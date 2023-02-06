@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>iserver-job</artifactId>
+        <groupId>com.iserver</groupId>
+        <version>${revision}</version>
+    </parent>
+
+
+    <modelVersion>4.0.0</modelVersion>
+    <version>${revision}</version>
+    <artifactId>iserver-quartz</artifactId>
+
+
+
+    <properties>
+        <!-- swagger-ui 相关版本 -->
+        <swagger.version>3.0.0</swagger.version>
+        <swagger-models.version>1.6.8</swagger-models.version>
+        <knife4j-spring.version>3.0.3</knife4j-spring.version>
+        <knife4j-spring.version>3.0</knife4j-spring.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.iserver</groupId>
+            <artifactId>iserver-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iserver</groupId>
+            <artifactId>iserver-common-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.iserver</groupId>
+            <artifactId>iserver-common-quartz</artifactId>
+        </dependency>
+
+        <!--web 模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- OkHttps -->
+        <dependency>
+            <groupId>com.ejlchina</groupId>
+            <artifactId>okhttps-jackson</artifactId>
+        </dependency>
+
+        <!--#################### 一下依赖可根据项目中的技术选型进行选择性的使用 ##################### -->
+        <!-- Swagger 注解及基础依赖 -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>${swagger-models.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-models.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+    </dependencies>
+
+</project>

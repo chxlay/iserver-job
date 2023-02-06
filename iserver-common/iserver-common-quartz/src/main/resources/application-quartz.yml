@@ -1,0 +1,56 @@
+#######  数据源，实际项目中会迁移到配置中心中进行配置管理
+spring:
+
+  quartz:
+    #相关属性配置
+    properties:
+      org:
+        quartz:
+          # 调度器 scheduler 属性相关配置
+          scheduler:
+            # 调度表示名,集群中每一个实例都必须使用相同的名称
+            instanceName: clusterQuartz
+            # 集群中实例Id,必须保证全局唯一,AUTO 为自动给集群中每一个节点分配一个唯一ID
+            instanceId: AUTO
+
+          # jobStore 相关属性配置
+          jobStore:
+            # 持久化方式，设置为 数据库持久化方式
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            # 数据库代理类,一般 StdJDBCDelegate 能满足大部分的数据库
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            # 数据库表前缀，默认 QRTZ_
+            tablePrefix: QRTZ_
+            # 是否加入集群
+            isClustered: true
+            # 调度实例失效的检查时间间隔 ms 毫秒,集群间心跳检查时间间隔
+            clusterCheckinInterval: 10000
+            # JobDataMap 是否限制只存 String 类型,默认为false,即不限制
+            useProperties: false
+            # 事务设置，是否托管事务JDBC链接，当设置为 TRUE 时,此属性告知 Quartz,在非托管 JDBC 链接上调用 setTransactionIsolation
+            txIsolationLevelReadCommitted: true
+
+
+          # Quartz 线程池相关配置
+          threadPool:
+            # Quartz 线程池的实现，也可以自定义（一般使用 SimpleThreadPool 即可满足几所所有让你的需求）
+            class: org.quartz.simpl.SimpleThreadPool
+            # 线程总数，一般设置 1 -100 的整数，根据系统资源自行配置
+            threadCount: 20
+            # 线程的优先级（可以是 Thread.MIN_PRIORITY(即1)和Thread.MAX_PRIORITY(即10)之间的任意 int类型，默认值 5）
+            threadPriority: 5
+            # 设置是否为守护线程
+            threadsInheritContextClassLoaderOfInitializingThread: true
+
+            # 以下配置属性为 守护线程 属性,配置类中可能会没有这些属性,若没有则注释即可
+            #makethreadsdaemons: false
+            #threadsinheritgroupofinitializingthread: false
+            # 线程前缀默认值是：[Scheduler Name]_Worker
+            #threadnameprefix: swhJobThead
+
+
+    #数据库方式 JDBC / MEMORY
+    job-store-type: jdbc
+    #初始化表结构
+    #jdbc:
+    #initialize-schema: never

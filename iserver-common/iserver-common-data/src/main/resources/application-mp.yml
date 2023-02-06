@@ -1,0 +1,28 @@
+############################# MP 全局配置 ###################################
+mybatis-plus:
+  # Mapper.xml 文件扫描
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  # 枚举 @EnumValue 扫描,如果遇枚举属性转换无效,可能是 mp版本太低
+  type-enums-package: com.iserver.*.enums
+  # 自定义TypeHandler 扫描
+  type-handlers-package: com.iserver.**.typehandler
+  # 配置
+  configuration:
+    # 下划线是否转驼峰,默认 true
+    map-underscore-to-camel-case: true
+    # SQL 语句答应
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    # 是否控制台 print mybatis-plus 的 LOGO
+    banner: true
+
+    # com.baomidou.mybatisplus.core.config.GlobalConfig.DbConfig
+    db-config:
+      # ID 生成全局策略,若单个Bean需要局部配置，直接配置在单个实体类@TableId 上可覆盖全局
+      id-type: assign_id
+      # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-field: is_delete
+      # 逻辑已删除值(默认为 1)
+      logic-delete-value: 1
+      # 逻辑未删除值(默认为 0)
+      logic-not-delete-value: 0

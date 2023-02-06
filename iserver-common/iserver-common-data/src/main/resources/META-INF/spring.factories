@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.iserver.common.data.mybatis.MpConfig,\
+  com.iserver.common.data.mybatis.MpMetaObjectHandler

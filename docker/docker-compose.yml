@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+
+  # 定时任务quartz docker 运行
+  iserver-quartz:
+    env_file: .env
+    build:
+      args:
+        - JDK=${JDK_VERSION}
+        - TIME_ZONE=${TZ}
+        - SERVER_NAME=iserver-quartz
+        - SERVER_PORT=${JOB_PORT}
+      context: ../iserver-quartz
+      dockerfile: Dockerfile
+    image: iserver-quartz
+    container_name: iserver-quartz
+    restart: always
+    ports:
+      - '${JOB_PORT}:${JOB_PORT}'
+    networks:
+      - iserver-network
+
+
+
+# 自定义网桥 iserver-network
+networks:
+  iserver-network:
+    # 启动时不自动创建网桥,需要提前手动创建 网桥 docker network create -d bridge iserver-network
+    external: true
+    driver: bridge

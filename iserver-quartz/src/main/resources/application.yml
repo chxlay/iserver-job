@@ -1,0 +1,32 @@
+server:
+  port: 1989
+
+# 数据源
+spring:
+  application:
+    name: @project.artifactId@
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 你的项目中 MySQL相关连接,如：localhost/127.0.0.1/192.168.1.xxx
+      host: ${MYSQL_HOST:iserver-mysql}
+      # 你的MySQL 连接端口,如： 3306
+      port: ${MYSQL_PORT:3306}
+      # 你代码生成逆向工程使用的数据库名称,如：code_generate
+      database: ${JOB_DB:iserver_job}
+
+      # 你的MySQL 连接用户,如： root
+      username: ${MYSQL_USER:root}
+      # 你的MySQL 连接密码,如： your_root_password
+      password: ${MYSQL_PWD:root_password}
+
+      # MySQL 的连接全配置
+      url: jdbc:mysql://${spring.datasource.druid.host}:${spring.datasource.druid.port}/${spring.datasource.druid.database}?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
+
+  # 引入 MP 配置 （iserver-common-data/resource/application-mp.yml）
+  # 项目中通常已经配置好了全局的,无需配置,请以个人项目中整体配置为准，我这里是单独测试的项目,所以额外的引入了配置
+  profiles:
+    include:
+      - mp
